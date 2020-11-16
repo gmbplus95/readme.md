@@ -1,1238 +1,1226 @@
-# 現場配置設計画面
+# Thiết kế màn hình hiện trường
 
-## 概要
+## Khái quát
 
-* ユーザーが現場画面を設計することができる
+* Cho phép user thiết kế màn hình hiện trường
 
-## 画面に入る方法
+## Cách vào màn hình
 
-* マスター管理 > 現場一覧 > 一つの現場を選択する
+* Quản lý master > Danh sách hiện trường > Chọn 1 hiện trường
 
-## 用語の定義
+## Định nghĩa thuật ngữ
 
-- 無し
+- Không có
 
-## 使用される記号 
-- o : 適用する
-- x : 適用しない
+## Ký hiệu sử dụng
 
-## 1. 画面項目定義
+- o : Áp dụng
+- x : Không áp dụng
 
-### 1. 現場配置設計画面の概要
+## 1. Định nghĩa hạng mục màn hình
 
-``` 下記画像は現場配置設計画面のイメージである。 デフォルトでは、ページに入るまたはページを再読み込みすると「ホーム」タブが表示される```
+### 1. Tổng quan màn hình thiết kế hiện trường
+
+``` Hình ảnh miêu tả tổng quan màn hình thiết kế hiện trường. Mặc định chọn Home tab (ホーム) khi vào trang hoặc reload trang.```
 
 ![Layout screen](./document_images/layout_screen_active_home_tab.png)
-1. 「ホーム」タブ
-2. 「オブジェクトの編集」タブ
-3. 「ホーム」タブのキャンバス編集に使用されるツールバー
-    1.  ひとつ前の状態に戻る (１つ戻る)
 
-    2. ひとつ後の状態に進む　(１つ進む)
+1. Home tab (ホーム)
+2. Edit tab (オブジェクトの編集)
+3. Các tool sử dụng để style canvas (Home tab (ホーム))
 
-    3. オブジェクトの選択 (選択)
+   1. Lùi 1 bước về trạng thái chỉnh sửa trước đấy (１つ戻る)
+   2. Tiến lên 1 bước trạng thái chỉnh sửa vừa lùi (１つ進む)
+   3. Chọn đối tượng (選択)
+   4. Thêm text (テキスト)
+   5. Thêm ảnh (画像)
+   6. Thêm linh kiện (アイテム)
+   7. Vẽ hình (図形)
+   8. Vẽ đường (線)  // edited
+   9. Sao chép từ ngày khác / vị trí khác (別日/別場所 からコピー) // edited
+   10. Di chuyển background (背景移動)
+   11. Thay đổi background (背景設定)
+   12. Cut object được chọn (カット)
+   13. Copy object được chọn (コピー)
+   14. Paste object được chọn (貼り付け)
+   15. Thay đổi hình dạng con trỏ chuột khi di chuyển vào khu vực chỉnh sửa canvas (ポインター)
+   16. Thay đổi print range (印刷範囲)
+   17. In màn hình canvas (印刷)
+4. Màn hình canvas
+5. Màn hình print range
+6. Menu navigation bottom
+7. Phần thông tin của bản vẽ // edited
+8. Button ẩn hiện thanh công cụ  (ツールバーを非表示にする) // edited
 
-    4. テキストの追加 (テキスト)
-
-    5. 画像の追加 (画像)
-
-    6. アイテムの追加 (アイテム)
-
-    7. 図形の描画 (図形)
-
-    8. 線の描画 (線)
-
-    9. 別日/別場所 からコピー
-
-    10. 背景の移動 (背景移動)
-
-    11. 背景の変更 (背景設定)
-
-    12. 選択したオブジェクトの切り取り (カット)
-
-    13. 選択したオブジェクトのコピー (コピー)
-
-    14. 選択したオブジェクトの貼り付け (貼り付け)
-
-    15. マウスポインタの形を変更する (ポインター)
-
-    16. 印刷範囲を変更する (印刷範囲)
-    
-    17. キャンバス画面の印刷 (印刷)
-    
-4. キャンバス
-5. 印刷範囲
-6. 表示形式メニュー
-7. ページヘッダーの情報
-8. キャンバス編集に使用されるツールを非表示／表示にしする(ツールバーを非表示にする)
-
-``` 下記画像は、オブジェクトを選択して「オブジェクトの編集」タブをクリックした時の現場デザイン画面のイメージである。```
+``` Hình ảnh miêu tả tổng quan màn hình thiết kế hiện trường khi chọn một đối tượng và click vào Edit tab (オブジェクトの編集 ).```
 
 ![Layout screen](./document_images/layout_screen_active_edit_tab.png)
-1.  「ホーム」タブ
-2. 「オブジェクトの編集」タブ
-3. 「オブジェクトの編集」のキャンバ編集に使用されるツールバー
 
-    1. 背景色を変更する (塗り)
+1. Home tab (ホーム)
+2. Edit tab (オブジェクトの編集)
+3. Các tool sử dụng để style canvas (Edit home)
 
-    2. 背景の透明度を変更する (透明度)
+   1. Thay đổi màu background (塗り)
+   2. Thay đổi độ trong suốt background (透明度)
+   3. Thay đổi màu của line (線の色)
+   4. Thay đổi kiểu line (線の種類)
+   5. Thay đổi kích thước line (線の太さ)
+   6. Thay đổi chiều mũi tên (矢印の向き)
+   7. Thay đổi kích thước của chiều mũi tên (矢印のサイズ) ([Các trường hợp Kích thước mũi tên(矢印のサイズ) sẽ được enable hoặc disable](#11.-Các-trường-hợp-tool-arrow-size-sẽ-được-enable-hoặc-disable))
+   8. Thay đổi màu của text (文字の色)
+   9. Thay đổi kích thước của text (文字のサイズ)
+   10. Group (グループ化) / Ungroup (グループ解除) các đối tượng hoặc các group
+   11. Di chuyển đối tượng lên trên cùng (最前面へ)
+   12. Di chuyển đối tượng xuống cuối cùng (最背面へ)
+   13. Khóa đối tượng (ロック)
+   14. Xóa đối tượng (削除)
+   15. Hiển thị thông tin đối tượng (情報)
+4. Màn hình canvas
+5. Màn hình background print
+6. Menu navigation bottom
+7. Object được vẽ
+8. Phần thông tin của bản vẽ // edited
+9. Ẩn hiện các tool sử dụng để style canvas (ツールバーを非表示にする)
 
-    3. 線の色を変更する (線の色)
-    
-    4. 線の種類を変更する (線の種類)
+### 2. Phần dùng chung
 
-    5. 線の太さを変更する (線の太さ)
+1. Các quyền được thực hiện khi đăng nhập vào hệ thống
 
-    6. 矢印の向きを変更する (矢印の向き)
+   - Admin trụ sở chính
+   - Admin chi nhánh
+   - Quản đốc hiện trường
+   - Admin công ty hợp tác
+   - Thợ cả
+   - Thợ thủ công
+2. Các trạng thái khi thao tác với tool:
 
-    7. 矢印の向きのサイズを変更する (矢印のサイズ) ([「矢印のサイズ」ツールが有効になるケースと無効になるケース](#10.-「矢印のサイズ」ツールが有効になるケースと無効になるケース))
+   #### 1. Trạng thái cho phép chọn
 
-    8. 文字の色を変更する (文字の色)
 
-    9. 文字のサイズを変更する (文字のサイズ)
+   * ```Hình ảnh dưới đây thể hiện trạng thái cho phép chọn của đối tượng```
 
-    10. オブジェクトまたはグループのグループ化・グループ化解除
+     ![Object status may select](document_images/object_status_may_select.png)
 
-    11. オブジェクトを最前面へ移動する (最前面へ)
+   #### 2. Trạng thái không thể thao tác
 
-    12. オブジェクトを最背面へ)移動す (最背面へ)
+   * ``` Hình ảnh miêu tả trạng thái không thể thao tác của đối tượng```
 
-    13. オブジェクトのロック (ロック)
+     ![Object status has been disabled](document_images/object_status_disabled.png)
 
-    14. オブジェクトの削除 (削除)
+   #### 3. Trạng thái khi di chuyển con trỏ chuột vào đối tượng:
 
-    15. オブジェクトの情報 (情報)
+   * ``` Hình ảnh miêu tả trạng khi di chuyển con trỏ chuột vào đối tượng```
 
-4. キャンバス
-5. 印刷範囲
-6. 表示形式メニュー
-7. 描画されたオブジェクト 
-8. ページヘッダーの情報
-9. キャンバス編集に使用されるツールを非表示／表示にしする (ツールバーを非表示にする)
+     ![Object status hover](document_images/object_status_hover.png)
 
-### 2. 共通
-1. システムの権限一覧
-    - 本社管理者
-    - 支店管理者
-    - 現場監督 
-    - 協力会社管理者 
-    - 職長 
-    - 職人 
-    
-2. ツールの各ステータス：
+   #### 4. Trạng thái đã được chọn
 
-    #### 1. 選択可能の「通常」ステータス 
-    
-    * ``` 下記画像はツールの選択可能の「通常」ステータスのイメージである ```
+   * ```Hình ảnh miêu tả trạng thái đã được chọn của đối tượng```
 
-        ![Object status may select](document_images/object_status_may_select.png)
+     ![Object status is selected](document_images/object_status_selected.png)
 
-    #### 2. 操作不可能の「非活性」ステータス
+   #### 5. Trạng thái khi click vào đối tượng
 
-    * ``` 下記画像はツールを操作できない「非活性」ステータスである```
+   * ```Hình ảnh miêu tả trạng thái khi được click của đối tượng```
 
-        ![Object status has been disabled](document_images/object_status_disabled.png)
-        
-    #### 3. オブジェクト上にマウスポインタを置いたときの「マウスオーバー」ステータス
-        
-    * ``` 下記画像はツールのマウスポインタを置いたときのステータスである```
+     ![Object status is clicked](document_images/object_status_clicked.png)
 
-        ![Object status hover](document_images/object_status_hover.png)
+   #### 6. Trạng thái khi di chuyển con trỏ chuột vào các lựa chọn của droplist
 
-    #### 4. 選択されたの「選択中」ステータス
-        
-    * ``` 下記画像はツールの選択されたステータスである ```
+   * ```Hình ảnh miêu tả trạng thái khi user click chọn tool vẽ. Sau đó di chuyển con trỏ chuột vào droplist```
 
-        ![Object status is selected](document_images/object_status_selected.png)
+     ![Drop-down expansion status](document_images/drop-down_expanstion_status.png)
+3. 9 tool sử dụng để style cho đối tượng:
 
-    #### 5. オブジェクトをクリックしたときの「ドロップダウン展開」ステータス
-        
-    * ``` 下記画像はオブジェクトのクリックしたステータスである ```
-        
-        ![Object status is clicked](document_images/object_status_clicked.png)
+   #### Hình ảnh miêu tả 9 tool sử dụng để style cho đối tượng
 
-    #### 6. ドロップリストのオプションの上にマウスポインタを置いたときのステータス
+   ![All tool styles](document_images/all_tool_styles_active.png)
 
-    * ``` 下記画像はユーザーが描画ツールをクリックして、表示されたドロップダウンのオプションにマウスオーバーしたステータスである```
-        
-        ![Drop-down expansion status](document_images/drop-down_expanstion_status.png)
 
-3. オブジェクトの編集に使用される9つのツール： 
-    #### 下記画像は、オブジェクトのスタイル設定に使用される9つのツールのイメージである
-    
-    ![All tool styles](document_images/all_tool_styles_active.png)
+   1. Thay đổi màu background (塗り)
+   2. Thay đổi độ trong suốt background (透明度)
+   3. Thay đổi màu của line (線の色)
+   4. Thay đổi kiểu line (線の種類)
+   5. Thay đổi kích thước line (線の太さ)
+   6. Thay đổi chiều mũi tên (矢印の向き)
+   7. Thay đổi kích thước của chiều mũi tên (矢印のサイズ) ([Các trường hợp  Kích thước mũi tên(矢印のサイズ) sẽ được enable hoặc disable](#11.-Các-trường-hợp-tool-arrow-size-sẽ-được-enable-hoặc-disable))
+   8. Thay đổi màu của text (文字の色)
+   9. Thay đổi kích thước của text (文字のサイズ)
 
-    1. 背景色を変更する (塗り)
-    2. 背景の透明度を変更する (透明度)
-    3. 線の色を変更する (線の色)
-    4. 線の種類を変更する (線の種類)
-    5. 線の太さを変更する (線の太さ)
-    6. 矢印の向きを変更する (矢印の向き)
-    7. 矢印のサイズを変更する (矢印のサイズ) ([「矢印のサイズ」ツールが有効になるケースと無効になるケース](#10.-「矢印のサイズ」ツールが有効になるケースと無効になるケース))
-    8. 文字の色を変更する (文字の色)
-    9. 文字のサイズを変更する (文字のサイズ)
-        
-### 3. オブジェクトのスタイルを設定するためのツール：
-* #### 1. テキストであるオブジェクトのスタイルを設定するためのツール：
-        
-    1. 画像形式で表す
-        
-        ![Tool styles applied to text](document_images/tool_styles_applied_to_text.png)
-        
-        1. 背景色を変更する (塗り)
-        2. 背景の透明度を変更する (透明度)
-        3. 文字の色を変更する (文字の色)
-        4. 文字のサイズを変更する (文字のサイズ)
+### 3. Nhóm tool để style cho đối tượng:
 
-    2. テーブル形式で表す
-                
-        | 適用されるスタイル | 背景色 |  背景の透明度 | 線の色 | 線の種類 | 線の太さ | 矢印の向き | 矢印のサイズ | 文字の色 | 文字のサイズ |  
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-        | 適用 | o | o | x | x | x | x | x | o | o |     
-    
-* #### 2. 円、四角、多角形であるオブジェクトのスタイルを設定するためのツール：
-    
-    1. 画像形式で表す
-        
-        ![Tool styles applied to tool circle](document_images/tool_styles_applied_to_tool_shape.png)
-            
-        1. 背景色を変更する (塗り)
-        2. 背景の透明度を変更する (透明度)
-        3. 線の色を変更する (線の色)
-        4. 線の種類を変更する (線の種類)
-        5. 線の太さを変更する (線の太さ)
-                    
-    2. テーブル形式で表す
-        
-        | 適用されるスタイル | 背景色 |  背景の透明度 | 線の色 | 線の種類 | 線の太さ | 矢印の向き | 矢印のサイズ | 文字の色 | 文字のサイズ |  
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-        | 適用 | o | o | o | o | o | x | x | x |x|
+* #### 1. Nhóm tool để style cho đối tượng là text bao gồm:
 
-* #### 3. 直線であるオブジェクトのスタイルを設定するためのツール：
+  1. Miêu tả dưới dạng hình ảnh
 
-    1. 画像形式で表す
-        
-        ![Tool styles applied tool line](document_images/tool_styles_applied_tool_line.png)
-        
-        1. 線の色を変更する (線の色)
-        2. 線の種類を変更する (線の種類)
-        3. 線の太さを変更する (線の太さ)
-        4. 矢印の向きを変更する (矢印の向き)
-        5. 矢印のサイズを変更する (矢印のサイズ) ([「矢印のサイズ」ツールが有効になるケースと無効になるケース](#10.-「矢印のサイズ」ツールが有効になるケースと無効になるケース))
+     ![Tool styles applied to text](document_images/tool_styles_applied_to_text.png)
 
-    2. テーブル形式で表す
+     1. Thay đổi màu background (塗り)
+     2. Thay đổi độ trong suốt của màu background (透明度)
+     3. Thay đổi màu của text (文字の色)
+     4. Thay đổi kích thước của font chữ (文字のサイズ)
+  2. Miêu tả dưới dạng bảng
 
-        | 適用されるスタイル | 背景色 |  背景の透明度 | 線の色 | 線の種類 | 線の太さ | 矢印の向き | 矢印のサイズ | 文字の色 | 文字のサイズ |  
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-        | 適用 | x | x | o | o | o | o | o | x |x| 
 
-* #### 4. 折れ線オブジェクトのスタイルを設定するためのツール
+     | Style áp  dụng | Màu background | Độ trong suốt background | Màu của line | Kiểu line | Kích thước line | Kiểu mũi tên | Kích thước mũi tên | Màu của chữ | Kích thước của chữ |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Áp dụng | o | o | x | x | x | x | x | o | o |
+* #### 2. Nhóm tool để style cho đối tượng là hình tròn, hình chữ nhật, hình đa giác:
 
-    1. 画像形式で表す
+  1. Miêu tả dưới dạng hình ảnh
 
-        ![Tool styles applied tool polyline](document_images/tool_styles_applied_tool_polyline.png)
-        
-        1. 背景色を変更する (塗り)
-        2. 背景の透明度を変更する (透明度)
-        3. 線の色を変更する (線の色)
-        4. 線の種類を変更する (線の種類)
-        5. 線の太さを変更する (線の太さ)
-        6. 矢印の向きを変更する (矢印の向き)
-        7. 矢印のサイズを変更する (矢印のサイズ) ([「矢印のサイズ」ツールが有効になるケースと無効になるケース](#10.-「矢印のサイズ」ツールが有効になるケースと無効になるケース))
-        
-    2. テーブル形式で表す
+     ![Tool styles applied to tool circle](document_images/tool_styles_applied_to_tool_shape.png)
 
-        | 適用されるスタイル | 背景色 |  背景の透明度 | 線の色 | 線の種類 | 線の太さ | 矢印の向き | 矢印のサイズ | 文字の色 | 文字のサイズ |  
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-        | 適用 | o | o | o | o | o | o | o | x |x| 
+     1. Thay đổi màu background (塗り)
+     2. Thay đổi độ trong suốt của màu background (透明度)
+     3. Thay đổi màu của line (線の色)
+     4. Thay đổi kiểu line (線の種類)
+     5. Thay đổi kích thước line (線の太さ)
+  2. Miêu tả dưới dạng bảng
 
-* #### 5. 自由線であるオブジェクトのスタイルを設定するためのツール
 
-    1. 画像形式で表す
+     | Style áp  dụng | Màu background | Độ trong suốt background | Màu của line | Kiểu line | Kích thước line | Kiểu mũi tên | Kích thước mũi tên | Màu của chữ | Kích thước của chữ |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Áp dụng | o | o | o | o | o | x | x | x | x |
+* #### 3. Nhóm tool để style cho đối tượng là đường thẳng bao gồm:
 
-        ![Tool styles applied tool freehand](./document_images/tool_styles_applied_tool_freehand.png)
-        
-        1. 線の色を変更する (線の色)
-        2. 線の種類を変更する (線の種類)
-        3.  線の太さを変更する (線の太さ)
+  1. Miêu tả dưới dạng hình ảnh
 
-    2. テーブル形式で表す
+     ![Tool styles applied tool line](document_images/tool_styles_applied_tool_line.png)
 
-        | 適用されるスタイル | 背景色 |  背景の透明度 | 線の色 | 線の種類 | 線の太さ | 矢印の向き | 矢印のサイズ | 文字の色 | 文字のサイズ |  
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-        | 適用 | x | x | o | o | o | x | x | x |x| 
-        
-* #### 6. アイテムまたは画像であるオブジェクトのスタイルを設定するためのツール：
+     1. Thay đổi màu của line (線の色)
+     2. Thay đổi kiểu line (線の種類)
+     3. Thay đổi kích thước line (線の太さ)
+     4. Thay đổi chiều mũi tên (矢印の向き)
+     5. Thay đổi kích thước của chiều mũi tên (矢印のサイズ) ([Các trường hợp  Kích thước mũi tên (矢印のサイズ) sẽ được enable hoặc disable](#11.-Các-trường-hợp-tool-arrow-size-sẽ-được-enable-hoặc-disable))
+  2. Miêu tả dưới dạng bảng
 
-    1. 画像形式で表す
 
-        ![All tool styles will be disabled](document_images/all_tool_styles_disabled.png)
-        
-        ``` * これは特別なケースである。オブジェクトがアイテムまたは画像の場合、どのツールもオブジェクトに適用できない。```
+     | Style áp  dụng | Màu background | Độ trong suốt background | Màu của line | Kiểu line | Kích thước line | Kiểu mũi tên | Kích thước mũi tên | Màu của chữ | Kích thước của chữ |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Áp dụng | x | x | o | o | o | o | o | x | x |
+* #### 4. Nhóm tool để style cho đối tượng là hình nhiều đường(polyline) bao gồm:
 
-### 4. キャンバス画面に入るまたはページをリロードするとき
-1. キャンバスが自動的に中央に配置され、左側の2つのナビゲーションバーが非表示にされる
-2. 「背景移動」ツールが自動で選択され、「選択中」ステータスになる
+  1. Miêu tả dưới dạng hình ảnh
 
-    ``` 下記画像は、キャンバス画面に入るまたはページをリロードするときに「背景移動」ツールが選択されているステータスである```
+     ![Tool styles applied tool polyline](document_images/tool_styles_applied_tool_polyline.png)
 
-    ![Tool pan active](document_images/tool_pan_active.png)
+     1. Thay đổi màu background (塗り)
+     2. Thay đổi độ trong suốt background (透明度)
+     3. Thay đổi màu của line (線の色)
+     4. Thay đổi kiểu line (線の種類)
+     5. Thay đổi kích thước line (線の太さ)
+     6. Thay đổi chiều mũi tên (矢印の向き)
+     7. Thay đổi kích thước của chiều mũi tên (矢印のサイズ) ([Các trường hợp  Kích thước mũi tên (矢印のサイズ) sẽ được enable hoặc disable](#11.-Các-trường-hợp-tool-arrow-size-sẽ-được-enable-hoặc-disable))
+  2. Miêu tả dưới dạng bảng
 
-3. デフォルトでフルスクリーンモードで表示される
 
-4. 次のツールが無効にされる：
-    + ひとつ前の状態に戻る (１つ戻る)、ひとつ後の状態に進む (１つ進む)
-    
-        ![Disable tool redo and go foward](document_images/disable_tool_redo_and_go_foward.png)
-    
-    + カット、コピー、貼り付け
-        
-        ![Disable tool cut, copy, paste](document_images/disable_tool_cut_copy_paste.png)
+     | Style áp  dụng | Màu background | Độ trong suốt background | Màu của line | Kiểu line | Kích thước line | Kiểu mũi tên | Kích thước mũi tên | Màu của chữ | Kích thước của chữ |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Áp dụng | o | o | o | o | o | o | o | x | x |
+* #### 5. Nhóm tool để style cho đối tượng là đường kẻ tự do bao gồm:
 
-5. 「ホーム」タブが有効にされる、「オブジェクトの編集」タブが無効にされる 
+  1. Miêu tả dưới dạng hình ảnh
 
-    ![Active tool ホームタブ (ホーム) and disable tool Edit tab (オブジェクトの編集 )](document_images/active_home_tab.png)
-        
-### 5. オブジェクト描画を終了する方法
-以下のいずれかの方法を使用してください。
-1. 描画しているオブジェクトをダブルクリックする
-2. キーボードの`Space`ボタンを押します
-3. 「選択」ツールをクリックする
+     ![Tool styles applied tool freehand](./document_images/tool_styles_applied_tool_freehand.png)
 
-    ``` 下記画像は「選択」ツールが選択されているイメージである```
-    
-    ![Click tool object](./document_images/object_selection_status.png)
+     1. Thay đổi màu của line (線の色)
+     2. Thay đổi kiểu line (線の種類)
+     3. Thay đổi kích thước line (線の太さ)
+  2. Miêu tả dưới dạng bảng
 
-### 6. 1つのツールがが無効になる各ケース
-1. 選択したオブジェクトにそのツールを適用できない
-2. 複数のオブジェクトを選択したが、どのオブジェクトにも適用できない
-3. 「グループ化」が選択されている
-4. オブジェクトがロックされている
 
-### 7. コピー・カット・貼り付けツールが無効になる各ケース
+     | Style áp  dụng | Màu background | Độ trong suốt background | Màu của line | Kiểu line | Kích thước line | Kiểu mũi tên | Kích thước mũi tên | Màu của chữ | Kích thước của chữ |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Áp dụng | x | x | o | o | o | x | x | x | x |
+* #### 6. Đối tượng là linh kiện hoặc hình ảnh
 
-1. 共通
-    1. デフォルトでコピー・カット・貼り付けツールが無効になるケース
-        
-        1.1 キャンバスに入る
+  1. Miêu tả dưới dạng hình ảnh
 
-        1.2 ページをリロードする
+     ![All tool styles will be disabled](document_images/all_tool_styles_disabled.png)
 
-    2. コピー・カット・貼り付けツールが無効になるケース
+     ``` * Đây là trường hợp đặc biệt:  Nếu đối tượng là linh kiện hoặc hình ảnh thì sẽ không thể áp dụng bất cứ style nào lên đối tượng.```
 
-        2.1 キャンバス画面にオブジェクトがない
+### 4. Khi vào màn hình canvas hoặc reload trang
 
-        2.2 どのオブジェクトも選択していない
+1. Canvas sẽ tự động căn giữa màn hình, ẩn 2 navigation bar bên trái
+2. Tự động chọn Di chuyển background (背景移動), chuyển tool sang trạng thái đã được chọn
 
-2. 補足
-    1. 貼り付けツールが無効になるケース：
-        1. コピーまたはカットされているオブジェクトがないが場合
+   ``` Hình ảnh miêu tả Di chuyển background (背景移動) được chọn khi vào màn hình canvas hoặc reload trang```
 
-### 8. オブジェクトのロック機能を実行したときの無効になるツール
-1. カット、貼り付け
-        
-    ```下記画像はカットツールと貼り付けツールが無効になったイメージである```
+   ![Tool pan active](document_images/tool_pan_active.png)
+3. Mặc định hiển thị ở chế độ toàn màn hình
+4. Disable các tool:
+
+   + Lùi 1 bước về trạng thái chỉnh sửa trước đấy (１つ戻る), Tiến lên 1 bước trạng thái chỉnh sửa vừa lùi (１つ進む)
+
+     ![Disable tool redo and go foward](document_images/disable_tool_redo_and_go_foward.png)
+   + Cut (カット) , Copy (コピー), Paste (貼り付け)
+
+     ![Disable tool cut, copy, paste](document_images/disable_tool_cut_copy_paste.png)
+5. Active tool home bar(ホーム), disable tool edit bar(オブジェクトの編集)
+
+   ![Active tool Home tab (ホーム) and disable tool Edit tab (オブジェクトの編集 )](document_images/active_home_tab.png)
+
+### 5. Các cách để kết thúc khi vẽ 1 đối tượng
+
+Sử dụng 1 trong cách cách dưới đây:
+
+1. Click đúp vào đối tượng đang vẽ
+2. Ấn nút `Space` trên bàn phím
+3. Click vào tool chọn object
+
+   ```Hình ảnh miêu tả khi tool object được chọn```
+
+   ![Click tool object](./document_images/object_selection_status.png)
+
+### 6. Các trường hợp khi nào 1 tool style sẽ bị disable
+
+1. Khi không thể áp dụng style cho object đang được chọn
+2. Khi không thể áp dụng cho bất kỳ object nào trong trường hợp chọn nhiều object
+3. Khi chọn tool group (グループ化)
+4. Khi object bị lock
+
+### 7. Các trường hợp tool copy, cut và paste bị disable
+
+1. Dùng chung
+
+   1. Mặc định tool copy/cut/paste sẽ bị disable trong trường hợp
+
+      1.1 Khi vào màn hình canvas
+
+      1.2 Khi reload trang
+   2. Các trường hợp tool copy/cut/paste bị disable
+
+      2.1 Màn hình canvas không có object nào
+
+      2.2 Không chọn bất cứ object nào
+2. Bổ sung
+
+   1. Trường hợp tool paste sẽ bị disable
+      1. Khi không có object nào được copy hoặc cut
+
+### 8. Các tool sẽ bị disable khi thực hiện chức năng lock object
+
+1. Cut (カット), Paste (貼り付け)
+
+   ```Hình ảnh miêu tả tool Cut (カット) và Paste (貼り付け) bị disable```
 
    ![Disable tool cut and Paste](./document_images/disable_tool_cut_and_paste.png)
-    
-2. すべてのスタイル設定ツール
+2. Tất cả các tool style
 
-    ```下記画像はすべてのスタイルツールが無効になったイメージである```
+   ``` Hình ảnh miêu tả tất cả tool style bị disable```
 
    ![Disable all tool styles](./document_images/all_tool_styles_disabled.png)
-    
-3. 「グループ化」ツール
-    
-    ```下記画像は「グループ化」ツールがを示す ```
+3. Tool group (グループ化)
+
+   ```Hình ảnh miêu tả tool group (グループ化) bị disable```
 
    ![Disable tool group (グループ化)](./document_images/disable_tool_group.png)
-   
-4. 「グループ解除」のツール　
+4. Tool Ungroup(グループ解除)
 
-    ```下記画像は「グループ解除」ツールが無効になったイメージである```
+   ``` Hình ảnh miêu tả tool Ungroup (グループ解除) bị disable```
 
    ![Disable Tool Ungroup(グループ解除)](./document_images/disable_tool_ungroup.png)
-   
-5. オブジェクトを最前面へ移動する「最前面へ」ツールとオブジェクトを最背面へ移動する「最背面へ」ツール
+5. Tool Di chuyển đối tượng lên trên cùng (最前面へ), Di chuyển đối tượng xuống cuối cùng (最背面へ)
 
-    ```下記画像は「最前面へ」と「最背面へ」が無効になったイメージである```
+   ``` Hình ảnh miêu tả tool Di chuyển đối tượng lên trên cùng (最前面へ) và Di chuyển đối tượng xuống cuối cùng (最背面へ) bị disable```
 
    ![Disable tool move front (最前面へ) and move back (最背面へ)](./document_images/disable_tool_move_front_and_move_back.png)
-    
-6. 「削除」ツール
+6. Tool xóa object (削除)
 
-    ```下記画像は「削除」ツールが無効になったイメージである```
+   ``` Hình ảnh miêu tả tool xóa object (削除) bị disable```
 
    ![Disable tool delete object](./document_images/disable_tool_delete_object.png)
 
-### 9. グループ化またはグループ解除機能を実行した時の無効になるツール
-1. 「グループ化」ツールを実行した場合
-    
-    * すべてのスタイルツールを無効にする ([オブジェクトのスタイル設定ための９つのツール](#下記画像は、オブジェクトのスタイル設定に使用される9つのツールのイメージである))
+### 9. Các tool sẽ bị disable khi thực hiện chức năng group hoặc ungroup
 
+1. Tool group (グループ化)
 
-2. 「グループ解除」ツールを実行した場合
-    - グループ解除を選択すると、自動的に「ホーム」タブに切り替わり、「オブジェクトの編集」が無効になる
+   * Disable tất cả các tool style ([9 tool sử dụng để style cho đối tượng](#Hình-ảnh-miêu-tả-9-tool-sử-dụng-để-style-cho-đối-tượng))
+2. Tool Ungroup(グループ解除)
 
-    ```下記画像は無効になった「オブジェクトの編集」タブのイメージである```
+   - Khi chọn ungroup sẽ tự động chuyển về Home tab (ホーム) và disable Edit tab (オブジェクトの編集 )
+
+   ``` Hình ảnh miêu tả Edit tab (オブジェクトの編集 ) bị disable```
 
    ![Disable tool delete object](./document_images/disable_edit_tab.png)
 
+### 10. Các trường hợp tool kích thước của chiều mũi tên sẽ được enable hoặc disable
 
-### 10. 「矢印のサイズ」ツールが有効になるケースと無効になるケース
-> `'「矢印のサイズ」'`ツールの有効か無効かのは`'「矢印の向き」'`ツールの値に依存する
+> Trạng thái enable và disable của tool `'Thay đổi kích thước của chiều mũi tên (矢印のサイズ)'` sẽ phụ thuộc vào giá trị của tool `'Thay đổi chiều mũi tên (矢印の向き)'`
 
-1. `「矢印の向き」の値が``「なし」である場合`、'`矢印の向きのサイズを変更する（矢印のサイズ）'`を無効になる
-    
-    ```下記画像は「矢印の向き」ツールの値が「なし」で、「矢印のサイズ」ツールが無効になったイメージである```
+1. Trường hợp tool `'Thay đổi chiều mũi tên (矢印の向き)'` có giá trị là `なし` thì sẽ disable tool `'Thay đổi kích thước của chiều mũi tên (矢印のサイズ)'`
 
-    ![Disable 矢印のサイズ(矢印のサイズ)](./document_images/disable_tool_arrow_size.png)
+   ``` Hình ảnh miêu tả Kích thước mũi tên(矢印のサイズ) bị disable khi giá trị của tool 'Thay đổi chiều mũi tên (矢印の向き)' có giá trị là なし```
 
-2. `'「矢印の向き」`の値が`なし`ではないの場合は、ツール`'矢印の向きのサイズを変更する（矢印のサイズ）'`を有効にする
+   ![Disable Kích thước mũi tên(矢印のサイズ)](./document_images/disable_tool_arrow_size.png)
+2. Khi giá trị của tool `'Thay đổi chiều mũi tên (矢印の向き)'` khác `なし` thì sẽ enable tool `'Thay đổi kích thước của chiều mũi tên (矢印のサイズ)'`
 
-    ```画像はツール「矢印の向きのを変更する（矢印の向き）」の値がなしではないの場合、有効になるツール「矢印のサイズ（矢印のサイズ）」ことを表す```
+   ``` Hình ảnh miêu tả tool kích thước của chiều mũi tên được enable khi giá trị của tool 'Thay đổi chiều mũi tên (矢印の向き)' có giá trị khác なし```
 
-    ```例1: ```
+   ```Ví dụ 1: ```
 
-    ![The value of arrow size is 始点](document_images/enable_tool_arrow_size_2.png)
-    
-    ``` 例2: ```
+   ![The value of arrow size is 始点](document_images/enable_tool_arrow_size_2.png)
 
-    ![The value of arrow size is 両端](./document_images/enable_tool_arrow_size_3.png)
+   ```Ví dụ 2:```
 
-### 11. ツールバーを表示/非表示にする
-* ホームタブ(ホーム)または編集タブ (オブジェクトの編集 )でキャンバスのスタイル設定に使用するツールを非表示にできる
+   ![The value of arrow size is 両端](./document_images/enable_tool_arrow_size_3.png)
 
-    * ユーザーがリンク`ツールバーを非表示にする`をクリックする場合、アクティブなタブでキャンバスのスタイルを設定するため使用されるツールを非表示する。 クリックした後、テキストが`ツールバーを表示する`に変わる
+### 11. Đóng mở toolbar (ツールバーを非表示にする)
 
-    ```画像は`ツールバーを非表示にする`リンクをクリックすると、非表示にしたホームタブ（ホーム）でキャンバスのスタイルを設定するため使用されるツールを表す```
+* Cho phép ẩn hiện các tool sử dụng để style canvas ở Home tab (ホーム) hoặc Edit tab (オブジェクトの編集 )
 
-    ![Layout screen](./document_images/hide_tool_bar.png)
+  * Trường hợp user click vào link `ツールバーを非表示にする` sẽ ẩn các tool sử dụng để style canvas ở tab đang active. Sau khi click, text sẽ chuyển thành `ツールバーを表示する`
 
-    ```画像はホームタブ（ホーム）でのツールバーがリンク`ツールバーーを表示する`をクリックした後表示されることを表す```
+  ``` Hình ảnh miêu tả các tool sử dụng để style canvas ở Home tab (ホーム) đã bị ẩn khi click link 'ツールバーを非表示にする'```
 
-    * ユーザーがリンク`ツールバーを表示する`をクリックするする場合、アクティブなタブにキャンバスのスタイル設定に使用されるツールを表示する。 クリックした後、テキストが`ツールバーを非表示にする`に変わる
-    
-    ![Layout screen](./document_images/show_tool_bar.png)
+  ![Layout screen](./document_images/hide_tool_bar.png)
 
-### 12. ツールタブのステータス
+  ``` Hình ảnh miêu tả tool bả ở Home tab (ホーム) được hiển thị sau khi click link 'ツールバーを表示する'```
 
-``` 画像はツールタブのステータスを示す```
+  * Trường hợp user click vào link `ツールバーを表示する` sẽ hiển thị các tool sử dụng để style canvas ở tab đang active. Sau khi click, text sẽ chuyển thành `ツールバーを非表示にする`
+
+  ![Layout screen](./document_images/show_tool_bar.png)
+
+### 12. Các trạng thái của tool tab
+
+```Hình miêu tả các trạng thái của tool tab```
 
 ![Layout screen](./document_images/tool_tab_statuses.png)
 
-1. 通常のステータス (通常)
-2. 非活性のステータス　(非活性)
-3. T非活性のステータス ＋ マウスオーバー (非活性+マウスオーバー)
-4. マウスオーバーのステータス(マウスオーバー)
-5. 選択中のステータス(選択中)
+1. Trạng thái bình thường (通常)
+2. Trạng thái không hoạt động(Vô hiệu hóa) (非活性)
+3. Trạng thái không hoạt động + di chuột qua (非活性+マウスオーバー)
+4. Trạng thái khi di chuột qua(マウスオーバー)
+5. Trạng thái đã chọn(選択中)
 
+## 2. Thiết lập kế hoạch sắp xếp hiện trường
 
-## 2. 現場配置計画作成設定
-1. 作業場所と作業日を設定する
-   
-   > 機能の概要： 
+1. Thiết lập vị trí (作業場所) và ngày sử dụng (作業日)
 
-   + 一つの現場に複数の配置計画を作成できる
-   + 作業日と作業場所に従って配置計画を作成できる
-   
+   > Khái quát chức năng:
+   >
+
+   + Cho phép tạo nhiều kế hoạch sắp xếp trên 1 hiện trường
+   + Cho phép tạo kế hoạch sắp xếp theo từng ngày(作業日) và vị trí(作業場所)
+
    ![Layout screen](./document_images/setting_place_and_time.png)
-    
-    ```下記のテーブルは本機能での操作できるアカウントを示す```
-               
-   | アカウン種類 | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-   | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-   | 権限 | o | o | o | o | o | x | 
-    
-2. 背景画像の設定 
-   > 機能の概要：現場配置計画で写真、キャンバスの背景ファイルを追加または削除できる
-   + 写真とPDFファイルは15MBを超えることはできない
-   + クロップボックスモーダルは800pxx560pxである
-   + クロップ領域のサイズが560px x 396pxである
 
-        1. 画像ファイルを使用する
-            + 許可されるファイル形式： ```PNG, JPEG, JPG, GIF```
-        
-        2. pdfファイルを使用する
-            + 許可されるファイル形式： ``` PDF ```
-            
+   ```Bảng dưới đây thể hiện những tài khoản được phép thao tác với chức năng:```
 
-   + 実行手順：
-        1. ユーザーが画像/PDFファイルを選択した後、画像をクロップするためモーダルが表示される
-            
-            * ユーザーは、選択領域をドラッグしてクロップすることにより、カットサイズを変更できる
-      
-            * 選択されているクロップによって、画像のサイズが横・縦に合わせて調整される
 
-            ``` 下記画像は、背景ファイルをアップロードした後のクロップされた画面を示す```
-            
-            ![Modal crop background file](document_images/modal_crop_backgorund_file.png)
+   | Kiểu tài khoản | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+   | - | :-: | :-: | :-: | :-: | :-: | :-: |
+   | Quyền hạn | o | o | o | o | o | x |
+2. Thiết lập ảnh nền
 
-            1. クロップ枠
-            2. クロップ選択枠
+   > Khái quát chức năng: Cho phép thêm hoặc gỡ ảnh, file background của canvas trong kế hoạch sắp xếp hiện trường.
+   >
 
-        2. ユーザーが画像をクロップして、「決定」ボタンを押すことで、画像/PDFファイルを背景として選択することができる
-        
-            * 明るい部分は背景として選択される。 選択されていない部分は暗い色で表示される
+   + Ảnh và file PDF không được quá 15MB.
+   + Modal cropbox có kích thước là 800px x 560px
+   + Vùng chọn crop có kích thước là: 560px x 396px
 
-            * 選択領域のサイズに応じて背景がサイズ変更される
+     1. Sử dụng file ảnh
 
-        3. 「キャンセル」を押すことで別の画像を選択したり、操作をキャンセルしたりすることができる
+        + Định dạng file cho phép: ```PNG, JPEG, JPG, GIF```
+     2. Sử dụng file pdf
 
-## 3. 現場配置計画でキャンバスを描く
-1. キャンバスを移動する 
+        + Định dạng file cho phép: ```PDF```
+   + Các bước thực hiện:
 
-    > 機能概要：画面内の現場配置計画のキャンバスを移動できる
-        
-    ```下記のテーブルは本機能での操作できるアカウントを示す```
-           
-    | アカウン種類 | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-    | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-    | 権限 | o | o | o | o | o | x | 
-    
-2. オブジェクトを選択する 
-    1.一つのオブジェクトを選択した場合
-        + オブジェクトに適用できないツールは無効にする([オブジェクトごとの適用できるツール一覧](#3.-オブジェクトのスタイルを設定するためのツール：))
+     1. Sau khi user chọn ảnh/file PDF sẽ hiển thị modal để crop ảnh:
 
-    2. 複数のオブジェクトを選択した場合
-        + 選択したオブジェクトリスト内のオブジェクトに適用できるツールのみを有効にする ([オブジェクトごとの適用できるツール一覧](3.-オブジェクトのスタイルを設定するためのツール：))
-        
-    3. すべてのオブジェクトを選択した場合
-        + 最前面へオブジェクトを移動するツールと最背面へオブジェクトを移動するツールを無効にする
-        
-            ``` 下記画像は最前面へオブジェクトを移動するツールと最背面へオブジェクトを移動するツールを無効にすることを表す```
-            
-            ![Disable tool Di chuyển đối tượng lên trên cùng (最前面へ), move-Di chuyển đối tượng xuống cuối cùng (最背面へ)](./document_images/disable_tool_move_front_and_move_back.png)
-        
-    4. 一つのグループを選択した場合
-        - すべてのツールスタイルを無効にする ([オブジェクトの編集に使用される9つのツール](#下記画像は、オブジェクトのスタイル設定に使用される9つのツールのイメージである))
-    
-    5. 複数のグループを選択した場合
-        - すべてのツールスタイルを無効にする ([オブジェクトの編集に使用される9つのツール](#下記画像は、オブジェクトのスタイル設定に使用される9つのツールのイメージである))
-    
-    6. 一つのオブジェクトまたは一つのグループを選択した後 
-        - 「オブジェクトの編集」タブが有効になる
-        - 「選択」ツールが「選択中」ステータスに変更される
-        
-            ``` 下記画像は「オブジェクトの編集」タブが有効になって、「選択」ツールが「選択中」ステータスであるイメージである。```
-            
-            ![Active Edit tab, Object selection status](./document_images/object_selection_status.png)
-        
-        - カットツールとコピーツールが有効になる
-        
-            ``` 下記画像はカットツールとコピーツールが有効になったステータスである```
-            
-            ![Active tool cut and copy](./document_images/active_tool_cut_and_copy.png)
-     
-3. 図形描画
+        * User có thể thay đổi kích thước cắt bằng cách kéo vùng chọn để crop.
+        * Hình ảnh sẽ tự động resize theo chiều ngang hoặc chiều dọc. Phụ thuộc vào tỉ lệ hình ảnh đó so với kích thước vùng chọn crop.
 
-    > 機能の概要：キャンバス上に円、四角、多角形等の図形を描画できる
+        ```Hình ảnh miêu tả màn hình crop ảnh sau khi upload file background```
 
-    1. 円
+        ![Modal crop background file](document_images/modal_crop_backgorund_file.png)
 
-        ``` 下記画像は描画ツールをクリックして、表示される線の種類のイメージである```    
-        
-        ![Active tool cut and copy](./document_images/droplist_tool_shape.png)
+        1. Khung giới hạn crop
+        2. Khung chọn crop
+     2. Sau khi user crop xong ảnh, ấn nút `決定` để  chọn ảnh/file PDF làm background
 
-        * 次の種類のアカウントには、本機能を実行する権限がある
-        
-            | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-            | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-            | 権限 | o | o | o | o | o | x | 
-            
-        * 円であるオブジェクトの場合の有効になるツール一覧と無効になるツール一覧 ([円であるオブジェクトの場合の有効になるツール一覧と無効になるツール一覧](#2.-円、四角、多角形であるオブジェクトのスタイルを設定するためのツール：)).
-    
-        * 円描画を終了する方法([オブジェクト描画を終了する方法](#5.-オブジェクト描画を終了する方法))
-        
-        * 「グループ化」ツールが無効になる
+        * Phần sáng màu là phần được chọn làm background. Phần không được chọn sẽ hiển thị tối màu.
+        * Background lúc này sẽ được resize theo kích thước vùng chọn.
+     3. User có thể chọn ảnh khác hoặc hủy bỏ thao tác bằng cách nhấn `キャンセル`
 
-            ``` 下記画像は「グループ化」が無効になったイメージである```
-        
-            ![Disable tool group](./document_images/disable_tool_group.png)
+## 3. Vẽ canvas trong kế hoạch sắp xếp hiện trường
 
-        
-    2. 四角
+1. Di chuyển canvas
 
-        ```  下記画像はツールをクリックして、表示されるオプションのイメージである``    
+   > Khái quát chức năng: Cho phép di chuyển canvas của kế hoạch sắp xếp hiện trường trong màn hình
+   >
 
-        ![Active tool cut and copy](./document_images/droplist_tool_shape.png)
+   ```Bảng dưới đây thể hiện những tài khoản được phép thao tác với chức năng:```
 
-        * 次の種類のアカウントには、本機能を実行する権限がある
-        
-            | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-            | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-            | 権限 | o | o | o | o | o | x | 
 
-        * 四角であるオブジェクトである場合の有効になるツール一覧と無効になるツール一覧 ([四角であるオブジェクトである場合の有効になるケース一覧と無効になるツール一覧](#2.-円、四角、多角形であるオブジェクトのスタイルを設定するためのツール：)).
+   | Kiểu tài khoản | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+   | - | :-: | :-: | :-: | :-: | :-: | :-: |
+   | Quyền hạn | o | o | o | o | o | x |
+2. Chọn object
 
-        * 四角描画を終了する方法([オブジェクト描画を終了する方法](#5.-オブジェクト描画を終了する方法))
-        
-        * 「グループ化」ツールが無効になる
+   1. Với trường hợp chọn 1 object
 
-            ``` 下記画像は「グループ化」ツールが無効になったイメージである```
-        
-            ![Disable tool group (グループ化)](./document_images/disable_tool_group.png)
+      + Tool style nào không thể áp dụng được cho object sẽ bị disable.([Các tool style áp dụng tương với từng loại đối tượng](#4.-Các-nhóm-style-có-thể-áp-dụng-cho-các-đối-tượng:))
+   2. Với trường hợp chọn nhiều object
 
-    3. 多角形
+      + Chỉ enable những style nào cho phép áp dụng cho đối tượng bên trong list object được chọn.([Các tool style áp dụng tương với từng loại đối tượng](#4.-Các-nhóm-style-có-thể-áp-dụng-cho-các-đối-tượng:))
+   3. Với trường hợp chọn tất cả object
 
-        ``` 画像は描画ツールをクリックして表示されるオブションのイメージである```  
+      + Disable tool Di chuyển đối tượng lên trên cùng (最前面へ), Di chuyển đối tượng xuống cuối cùng (最背面へ)
 
-        ![Active tool cut and copy](./document_images/droplist_tool_shape.png)
+        ``` Hình ảnh miêu tả tool Di chuyển đối tượng lên trên cùng (最前面へ) và Di chuyển đối tượng xuống cuối cùng (最背面へ) bị disable```
 
-       * 次の種類のアカウントには、本機能を実行する権限がある
-        
-            | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-            | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-            | 権限 | o | o | o | o | o | x | 
+        ![Disable tool Di chuyển đối tượng lên trên cùng (最前面へ), move-Di chuyển đối tượng xuống cuối cùng (最背面へ)](./document_images/disable_tool_move_front_and_move_back.png)
+   4. Với trường hợp chọn 1 group
 
-        * 多角形であるオブジェクトの場合の有効になるツール一覧と無効になるツール一覧 ([多角形であるオブジェクトの場合の有効になるケース一覧と無効になるケース一覧](#2.-円、四角、多角形であるオブジェクトのスタイルを設定するためのツール：)).
+      - Disable tất cả các tool style ([9 tool sử dụng để style cho đối tượng](#Hình-ảnh-miêu-tả-9-tool-sử-dụng-để-style-cho-đối-tượng))
+   5. Trường hợp chọn nhiều group
 
-        * 多角形描画を終了する方法([オブジェクト描画を終了する方法](#5.-オブジェクト描画を終了する方法))
-        
-        * ユーザーは、オブジェクトをダブルクリックすることで、オブジェクトの線を変更できる。 次に、1点を選択してドラッグし、線の値を変更する
+      - Disable tất cả các tool style ([9 tool sử dụng để style cho đối tượng](#Hình-ảnh-miêu-tả-9-tool-sử-dụng-để-style-cho-đối-tượng))
+   6. Sau khi chọn 1 object hoặc 1 group
 
-            ``` 下記画像はユーザーが多角形であるオブジェクトをダブルクリックしたイメージである```
-            
-            ![Active tool cut and copy](./document_images/double_click_polygon.png)
+      - Active Edit tab (オブジェクトの編集)
+      - Chuyển tool chọn object (選択) sang trạng thái đã được chọn
 
-        * 「グループ化」ツールが無効になる
+        ``` Hình ảnh miêu tả trạng thái active của Edit tab (オブジェクトの編集). Tool object chuyển sang trạng thái đã được chọn```
 
-            ``` 下記画像は「グループ化」が無効になったイメージである```
-        
-            ![Disable tool group (グループ化)](./document_images/disable_tool_group.png)
-    
-4. 線の描画 
+        ![Active Edit tab, Object selection status](./document_images/object_selection_status.png)
+      - Active tool Cut (カット), Copy (コピー)
 
-    * 「Shift」キーを押しながら直線を描画することで、90度の直線を描画することができる
+        ``` Hình ảnh miêu tả trạng thái active của tool Cut (カット) và Copy (コピー)```
 
-    1. 直線の描画
+        ![Active tool cut and copy](./document_images/active_tool_cut_and_copy.png)
+3. Vẽ hình
 
-        ``` 下記画像は線の描画ツールをクリックして表示される各オブションのイメージである```    
+   > Khái quát chức năng: Cho phép vẽ hình(hình tròn, hình chữ nhật, hình đa giác) trên canvas.
+   >
 
-        ![Active tool cut and copy](./document_images/droplist_tool_line.png)
+   1. Hình tròn (円)
 
-        * 次の種類のアカウントには、本機能を実行する権限がある
-            
-            | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-            | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-            | 権限 | o | o | o | o | o | x | 
+      ``` Hình ảnh miêu tả các loại hình khi click vào tool vẽ hình```
 
-        * 直線であるオブジェクトである場合の有効になるツール一覧と無効になるツール一覧 ([直線であるオブジェクトである場合の有効になるツール一覧と無効になるツール一覧](#3.-直線であるオブジェクトのスタイルを設定するためのツール：)).
+      ![Active tool cut and copy](./document_images/droplist_tool_shape.png)
 
-        * 多角形描画を終了する方法([オブジェクト描画を終了する方法](#5.-オブジェクト描画を終了する方法))
-        
-        * 「グループ化」ツールが無効になる
+      * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-            ``` 下記画像は「グループ化」ツールが無効になったイメージである```
-        
-            ![Disable tool group (グループ化)](./document_images/disable_tool_group.png)
 
-    2. 折れ線の描画
+        | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+        | - | :-: | :-: | :-: | :-: | :-: | :-: |
+        | Quyền hạn | o | o | o | o | o | x |
+      * Các tool style sẽ được enable và disable với đối tượng là hình tròn ([Tìm hiểu các tool style áp dụng và không áp dụng với đối tượng là hình tròn](#2.-Nhóm-các-style-áp-dụng-cho-đối-tượng-là-hình-tròn,-hình-chữ-nhật,-hình-đa-giác:)).
+      * Các cách để kết thúc khi vẽ hình tròn([Các cách để kết thúc khi vẽ 1 đối tượng](#6.-Các-cách-để-kết-thúc-khi-vẽ-1-đối-tượng))
+      * Disable tool group (グループ化)
 
-        ``` 下記画像は線の描画ツールをクリックして表示される各オブションのイメージである```    
+        ``` Hình ảnh miêu tả tool group (グループ化) bị disable```
 
-        ![Active tool cut and copy](./document_images/droplist_tool_line.png)
+        ![Disable tool group](./document_images/disable_tool_group.png)
+   2. Hình chữ nhật (四角)
 
-        * 次の種類のアカウントには、本機能を実行する権限がある
-            
-            | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-            | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-            | 権限 | o | o | o | o | o | x | 
+      ``` Hình ảnh miêu tả các loại hình khi click vào tool vẽ hình```
 
-        * 折れ線であるオブジェクトの場合の有効になるツール一覧と無効になるツール一覧([折れ線であるオブジェクトの場合の有効になるツール一覧と無効になるツール一覧](#4.-折れ線オブジェクトのスタイルを設定するためのツール)).
+      ![Active tool cut and copy](./document_images/droplist_tool_shape.png)
 
-        * 多角形描画を終了する方法([オブジェクト描画を終了する方法](#5.-オブジェクト描画を終了する方法))
-        
-        * オブジェクトをダブルクリック、折れ線の頂点をドラッグすることで、折れ線を編集できる
+      * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-            ``` 下記画像はユーザーが折れ線であるオブジェクトがダブルクリックされた状況である```
-            
-            ![Active tool cut and copy](./document_images/double_click_polyline.png)
 
-        * 「グループ化」ツールが無効になる
+        | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+        | - | :-: | :-: | :-: | :-: | :-: | :-: |
+        | Quyền hạn | o | o | o | o | o | x |
+      * Các tool style sẽ được enable và disable với đối tượng là hình chữ nhật ([Tìm hiểu các tool style áp dụng và không áp dụng với đối tượng là chữ nhật](#2.-Nhóm-các-style-áp-dụng-cho-đối-tượng-là-hình-tròn,-hình-chữ-nhật,-hình-đa-giác:)).
+      * Các cách để kết thúc khi vẽ hình chữ nhật([Các cách để kết thúc khi vẽ 1 đối tượng](#6.-Các-cách-để-kết-thúc-khi-vẽ-1-đối-tượng))
+      * Disable tool group (グループ化)
 
-            ``` 下記画像は「グループ化」が無効になったイメージである```
-        
-            ![Disable tool group (グループ化)](./document_images/disable_tool_group.png)
-    3. 自由線の描画
+        ``` Hình ảnh miêu tả tool group (グループ化) bị disable```
 
-        ``` 下記画像は線の描画ツールをクリックし表示される各オプションのイメージである```    
-
-        ![Active tool cut and copy](./document_images/droplist_tool_line.png)
-
-        * 次の種類のアカウントには、本機能を実行する権限がある
-            
-            | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-            | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-            | 権限 | o | o | o | o | o | x | 
-
-        * 自由線であるオブジェクトの場合の有効になるツール一覧と無効になるツール一覧([自由線であるオブジェクトの場合の有効になるツール一覧と無効になるツール一覧](#5.-自由線であるオブジェクトのスタイルを設定するためのツール)).
-
-        * 多角形を描くときの完了の方法([オブジェクト描画を終了する方法](#5.-オブジェクト描画を終了する方法))
-        
-        *「グループ化」が無効になる
-
-            ``` 下記画像は「グループ化」が無効になったイメージである```
-        
-            ![Disable tool group (グループ化)](./document_images/disable_tool_group.png)
-
-5. テキストの追加
-
-    > 機能の概要：キャンバスに任意のテキストを追加することができる
-
-    * 次の種類のアカウントには、本機能を実行する権限がある
-            
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
-
-    * テキストであるオブジェクトの場合の有効になるツール一覧と無効になるツール一覧 ([テキストであるオブジェクトの場合の有効になるツール一覧と無効になるツール一覧](#1.-テキストであるオブジェクトのスタイルを設定するためのツール：)).
-
-    * 「グループ化」が無効になる
-
-        ``` 画像は「グループ化」ツールが無効になったイメージである```
-    
         ![Disable tool group (グループ化)](./document_images/disable_tool_group.png)
+   3. Hình đa giác (多角形)
 
-6. 図形の追加
+      ``` Hình ảnh miêu tả các loại hình khi click vào tool vẽ hình```
 
-    > 機能概要：キャンバスに任意の図形を追加できる
+      ![Active tool cut and copy](./document_images/droplist_tool_shape.png)
 
-    * 許可形式：`PNG, JPEG, JPG, GIF`
+      * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-    * アップロードファイルの最大サイズは15Mbである
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
-            
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
+        | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+        | - | :-: | :-: | :-: | :-: | :-: | :-: |
+        | Quyền hạn | o | o | o | o | o | x |
+      * Các tool style sẽ được enable và disable với đối tượng là hình đa giác ([Tìm hiểu các tool style áp dụng và không áp dụng với đối tượng là hình đa giác](#2.-Nhóm-các-style-áp-dụng-cho-đối-tượng-là-hình-tròn,-hình-chữ-nhật,-hình-đa-giác:)).
+      * Các cách để kết thúc khi vẽ hình đa giác([Các cách để kết thúc khi vẽ 1 đối tượng](#6.-Các-cách-để-kết-thúc-khi-vẽ-1-đối-tượng))
+      * User có thể thay đổi các đường thẳng của đối tượng bằng cách ấn double click vào đối tượng. Sau có chọn 1 điểm và kéo để thay đổi giá trị của đường thẳng.
 
-    * 図形であるオブジェクトの場合、すべてのすべてのツールスタイルが無効になる ([テキストであるオブジェクトに適用できないツール一覧](#6.-アイテムまたは画像であるオブジェクトのスタイルを設定するためのツール)).
+        ``` Hình ảnh miêu tả khi user ấn double click vào đối tượng là hình đa giác```
 
-    * 「グループ化」ツールが無効になる
+        ![Active tool cut and copy](./document_images/double_click_polygon.png)
+      * Disable tool group (グループ化)
 
-        ``` 下記画像は「グループ化」ツールが無効になったイメージである```
-    
+        ``` Hình ảnh miêu tả tool group (グループ化) bị disable```
+
         ![Disable tool group (グループ化)](./document_images/disable_tool_group.png)
+4. Vẽ line
 
-7. アイテムの追加
+   * Đường thẳng, đường thẳng gấp khúc (được cố định bằng cách vừa ấn phím `Shift`) // edited
 
-    > 機能の概要：アイテムの種類を選択し、該当アイテムの画像を表示できる
+   1. Vẽ đường thẳng (直線)
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
-            
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | x | x | x | 
+      ``` Hình ảnh miêu tả các loại đường thẳng khi click vào tool vẽ line```
 
-    * アイテムであるオブジェクトの場合、すべてのスタイルツールが無効になる ([アイテムであるオブジェクトに適用できないツール一覧](#6.-アイテムまたは画像であるオブジェクトのスタイルを設定するためのツール)).
+      ![Active tool cut and copy](./document_images/droplist_tool_line.png)
 
-    * 「グループ化」ツールが無効になる
+      * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-        ``` 下記画像は「グループ化」タブが無効になったイメージである```
-    
+
+        | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+        | - | :-: | :-: | :-: | :-: | :-: | :-: |
+        | Quyền hạn | o | o | o | o | o | x |
+      * Các tool style sẽ được enable và disable với đối tượng là đường thẳng ([Tìm hiểu các tool style áp dụng và không áp dụng với đối tượng là đường thẳng](#3-Nhóm-các-style-áp-dụng-cho-đối-tượng-là-đường-thẳng-bao-gồm:)).
+      * Các cách để kết thúc khi vẽ hình đa giác([Các cách để kết thúc khi vẽ 1 đối tượng](#6.-Các-cách-để-kết-thúc-khi-vẽ-1-đối-tượng))
+      * Disable tool group (グループ化)
+
+        ``` Hình ảnh miêu tả tool group (グループ化) bị disable```
+
         ![Disable tool group (グループ化)](./document_images/disable_tool_group.png)
+   2. Vẽ đường thẳng gấp khúc (折れ線) // edited
 
-    * アイテム表示のスケール（％）値を保存する
-        * アイテム表示のスケール（％）値を更新できる
-            * 最小スケールは10％です
-            * 最大スケールは100％です
-           
-        ~~~
-        - デフォルトで100％のスケール値で表示する
-        - スケール（％）が変更されると、リアルタイムが更新される。 ページをリロードすると、更新されたばかりのスケール（％）値で表示される
-        ~~~
-
-8. 別日/別場所からキャンバスをコピー
-    
-    > 機能の概要：別日/別場所からキャンバスを現在のキャンバス画面にコピーする
-
-    * 次の種類のアカウントには、本機能を実行する権限がある
-            
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | x | x | x | 
-
-9. 描画後にオブジェクトを自動的に選択する
-
-    * 図形、アイテム、テキスト、線描画を追加した後、自動的にオブジェクト選択ツールに切り替わり、描画したばかりのオブジェクトですでに選択されているステータスに切り替わる。 同時に、「オブジェクトの編集」タブが有効になる 
-
-        ``` 下記の画像は、「選択」ツールが選択されているイメージである ```
-
-        ![Active tool select](./document_images/automatically_select_the_object.png)
-            
-        1. 「選択」ツールが「選択中」ステータスである
-        2. 「オブジェクトの編集」が有効になる
-
-    * 次の種類のアカウントには、本機能を実行する権限がある
-            
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | o | 
-
-## 4. 現場配置計画にキャンバスを表示する
- 1. 表示倍率
-
-    > 機能の概要：キャンバスを拡大および縮小し、デフォルトサイズに戻すことができる
-
-    * 次の種類のアカウントには、本機能を実行する権限がある
-            
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
+      ``` Hình ảnh miêu tả các loại đường thẳng khi click vào tool vẽ line```
 
-    * 最小倍率は25％である
-    * 最大倍率は800%である
-    
-    ~~~
-    注意: 倍率が25%の場合「縮小」ボータンが無効になる
-    ~~~
-    
-    ``` 下記画像は「縮小」ボータンが無効になったことを表す```
-    
-    ![Disable zoomdown button](./document_images/disable_zoomdown_button.png)
-    
-    ~~~
-    注意: 倍率が800%の場合「拡大」ボータンが無効になる
-    ~~~
+      ![Active tool cut and copy](./document_images/droplist_tool_line.png)
 
-     ``` 下記画像は「拡大」ボータンが無効になることを表す```
-        
-    ![Disable zoomin button](./document_images/disable_zoom_in_button.png)
- 
- 2. フルスクリーンモードの設定 (フルスクリーンモード)
+      * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-    > 機能の概要：フルスクリーンモードでは、キャンバス画面とレイアウトが表示され、画面の右下隅にあるツール、ヘッダー、表示形式メニューが表示される。
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
-            
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
+        | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+        | - | :-: | :-: | :-: | :-: | :-: | :-: |
+        | Quyền hạn | o | o | o | o | o | x |
+      * Các tool style sẽ được enable và disable với đối tượng là đường thẳng đa giác([Tìm hiểu các tool style áp dụng và không áp dụng với đối tượng là đường thẳng đa giác](#4-Nhóm-các-style-áp-dụng-cho-đối-tượng-là-đường-thẳng-đa-giác-bao-gồm:)).
+      * Các cách để kết thúc khi vẽ hình đa giác([Các cách để kết thúc khi vẽ 1 đối tượng](#6.-Các-cách-để-kết-thúc-khi-vẽ-1-đối-tượng))
+      * User có thể thay đổi các đường thẳng của đối tượng bằng cách ấn double click vào đối tượng. Sau có chọn 1 điểm và kéo để thay đổivị trí của điểm tương ứng. //edited
 
-    * フルスクリーンモードを表示すると、画面の左側にある2つの表示形式メニューが非表示にされる
+        ``` Hình ảnh miêu tả khi user ấn double click vào đối tượng là đường thẳng đa giác```
 
-    ~~~
-    注意：デフォルトで、現場画面に入るときのフルスクリーンモードで表示される
-    ~~~
+        ![Active tool cut and copy](./document_images/double_click_polyline.png)
+      * Disable tool group (グループ化)
 
- 3. 印刷範囲の設定
+        ``` Hình ảnh miêu tả tool group (グループ化) bị disable```
 
-    > 機能の概要：印刷範囲のサイズ変更が可能で、デフォルトの状態にする
-    
-    * 次の種類のアカウントには、本機能を実行する権限がある
-            
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
+        ![Disable tool group (グループ化)](./document_images/disable_tool_group.png)
+   3. Vẽ đường kẻ tự do (自由線)
 
-4. キャンバスのオブジェクト情報を表示する
+      ``` Hình ảnh miêu tả các loại đường thẳng khi click vào tool vẽ line```
 
-    > 機能概要：オブジェクトの作成・更新・ロック状態に関する情報を表示する
-    
-    * 次の種類のアカウントには、本機能を実行する権限がある
-            
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
+      ![Active tool cut and copy](./document_images/droplist_tool_line.png)
 
-5. 画面分割
+      * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-    > 機能の概要： 画面を分割し、日別や場所別のキャンバスを表示することができる
 
-    ~~~
-    - デフォルトで現場設計画面に入るとシングル画面モードで表示される
-    ~~~
+        | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+        | - | :-: | :-: | :-: | :-: | :-: | :-: |
+        | Quyền hạn | o | o | o | o | o | x |
+      * Các tool style sẽ được enable và disable với đối tượng là đường kẻ tự do([Tìm hiểu các tool style áp dụng và không áp dụng với đối tượng là đường kẻ tự do](#5-Nhóm-các-style-áp-dụng-cho-đối-tượng-là-đường-kẻ-tự-do-bao-gồm:)).
+      * Các cách để kết thúc khi vẽ hình đa giác([Các cách để kết thúc khi vẽ 1 đối tượng](#6.-Các-cách-để-kết-thúc-khi-vẽ-1-đối-tượng))
+      * Disable tool group (グループ化)
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
-            
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
-    
-    1. シングル画面モード
+        ``` Hình ảnh miêu tả tool group (グループ化) bị disable```
 
-        * 表示形式メニューには、画面分割、縮小／拡大、表示倍率というオプションが表示される
+        ![Disable tool group (グループ化)](./document_images/disable_tool_group.png)
+5. Thêm text (テキスト)
 
-            ``` 下記画像はシングル画面のモードで表示形式メニューのイメージである```
-            
-            ![Navbar bottom in case of 1 screen](./document_images/navbar_bottom_1_screen.png)
+   > Khái quát chức năng: Cho phép vẽ text tùy ý trên canvas
+   >
 
-    
-    2. 複数の画面モード
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-        * [ホーム]タブと[オブジェクトの編集]タブのすべてのツールを無効にする。ただし、[印刷]と［ポインター］ツールを操作できる
-        
-            ``` 下記画像は、[ホーム]タブでのすべてのツールが無効になる。ただし、[印刷]と［ポインター］ツールは操作ができる。また、[編集]タブは無効になることを示す ```    
 
-            ![Disable tools in case of multiple screen](./document_images/disable_tools_multiple_screen.png)
-        
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Các tool style sẽ được enable và disable với đối tượng là text ([Tìm hiểu các tool style áp dụng và không áp dụng với đối tượng là text](#1-Nhóm-các-style-áp-dụng-cho-đối-tượng-là-text-bao-gồm:)).
+   * Disable tool group (グループ化)
 
-        * 画面の右下隅にある表示形式メニューは、縮小・拡大のオプションを日別と場所で並べ替えるオプションに切り替える。 日別と場所で並べ替えるオプションで「前へ」ボタンと「次へ」ボタンを追加する
+     ``` Hình ảnh miêu tả tool group (グループ化) bị disable```
 
-            ``` 下記画像は、複数の画面モードでの表示形式メニューを示す```
+     ![Disable tool group (グループ化)](./document_images/disable_tool_group.png)
+   * Chỉnh sửa text: Có thể sửa text đã vẽ bằng cách double click lên text muốn chỉnh sửa, click bất kì vị trí nào bên ngoài để kết thúc chỉnh sửa. // added
+6. Thêm ảnh (画像)
 
-            ![Navbar bottom in case of multiple screen](./document_images/navbar_bottom_multiple_screen.png)
+   > Khái quát chức năng: Cho phép thêm ảnh tùy ý trên canvas
+   >
 
+   * Định dạng file cho phép : `PNG, JPEG, JPG, GIF`
+   * File upload tối đa là 15Mb
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-            ``` 下記画像は複数の画面モードを示す```
 
-            ![Multiple screen](./document_images/multiple_screen.png)
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Tất cả các tool style sẽ bị disable với đối tượng là ảnh ([Tìm hiểu các tool style không được áp dụng với đối tượng là ảnh](#6-Đối-tượng-là-linh-kiện-hoặc-hình-ảnh)).
+   * Disable tool group (グループ化)
 
-        
-6. 表示順序を設定する
+     ``` Hình ảnh miêu tả tool group (グループ化) bị disable```
 
-    > 機能の概要：画面分割の後、使用日、位置または使用日と位置の前へ／次へに従って並べ替えることができる
+     ![Disable tool group (グループ化)](./document_images/disable_tool_group.png)
+7. Thêm linh kiện (アイテム)
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
-        
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
-  
-## 5. 現場配置計画でのキャンバス編集
-1. スタイルツール
+   > Khái quát chức năng: Cho phép chọn loại linh kiện, hiển thị ảnh linh kiện tương ứng
+   >
 
-    1.1 背景色を変更する (塗り)
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-    > 機能の概要：オブジェクトの背景色を変更
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | x | x | x |
+   * Tất cả các tool style sẽ bị disable với đối tượng là linh kiện ([Tìm hiểu các tool style không được áp dụng với đối tượng là linh kiện](#6-Đối-tượng-là-linh-kiện-hoặc-hình-ảnh)).
+   * Disable tool group (グループ化)
 
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
+     ``` Hình ảnh miêu tả tool group (グループ化) bị disable```
 
-    * 適用されるオブジェクトの種類
+     ![Disable tool group (グループ化)](./document_images/disable_tool_group.png)
+   * Lưu giá trị scale % hiển thị linh kiện
 
-        |オブジェクトの種類| 円 | 四角| 多角形 | 直線 | 折れ線 | 自由線 | テキスト |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 適用 | o | o | o | x | o | x | o |
+     * Cho phép cập nhật giá trị % scale hiển thị linh kiện
+       * Mức scale nhỏ nhất là 10%
+       * Mức scale lớn nhất là 200% // edited
 
-    * 背景色を変更するツールが無効になるケース一覧([背景色を変更するツールが無効になるケース一覧](#6.-1つのツールがが無効になる各ケース))
-    
-    1.2 背景の透明度を変更する (透明度)
-    > 機能の概要：背景色の透明度を変更する
+     ~~~
+     - Mặc định giá trị scale hiển thị là 100%
+     - Nếu thay đổi % scale sẽ được update realtine. Khi reload lại trang sẽ hiển thị theo giá trị % scale vừa update.
+     ~~~
+8. Copy canvas từ vị trí/ ngày khác (別日/別場所 からコピー)
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
+   > Khái quát chức năng: Copy canvas từ vị trí/ ngày khác vào màn hình canvas hiện tại.
+   >
 
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-    * 適用されるオブジェクトの種類
 
-        |オブジェクトの種類| 円 | 四角 | 多角形 | 直線 | 折れ線 | 自由線 | テキスト |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 適用 | o | o | o | x | o | x | o |
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | x | x | x |
+9. Tự động chọn object sau khi vẽ
 
-    * 背景の透明度を変更するツールが無効になるケース一覧([背景の透明度を変更するツールが無効になるケース一覧](#6.-1つのツールがが無効になる各ケース))
+   * Sau khi thêm ảnh, linh kiện, text, vẽ hình và vẽ line sẽ tự động chuyển sang tool chọn object và chuyển trạng thái thành đã được chọn với object vừa vẽ. Đồng thời sẽ kích hoạt Edit tab (オブジェクトの編集)
 
-    1.3 線の色を変更する (線の色)
+     ```Hình ảnh dưới đây miêu tả tool chọn object đã được chọn```
 
-    > 機能の概要: 線の色を変更する
+     ![Active tool select](./document_images/automatically_select_the_object.png)
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
+     1. Tool chọn object đã được chọn
+     2. Active tool Edit tab (オブジェクトの編集 )
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
 
-    * 適用されるオブジェクトの種類
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | o |
 
-        |オブジェクトの種類| 円 | 四角| 多角形 | 直線 | 折れ線 | 自由線 | テキスト |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 適用 | o | o | o | o | o | o | x |
+## 4. Bottom Navigation  // edited
 
-    * 線の色を変更するツールが無効になるケース一覧([線の色を変更するツールが無効になるケース一覧](#6.-1つのツールがが無効になる各ケース))
+1. Thiết lập zoom // edited
 
-    1.4 線の種類を変更する (線の種類)
-    > 機能の概要: 線のスタイルをデフォルトまたは破線に従って変更する
+   > Khái quát chức năng: Cho phép phóng to, thu nhỏ canvas // edited
+   >
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
 
-    * 適用されるオブジェクトの種類
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Mức phóng nhỏ nhất là 25%
+   * Mức phóng lớn nhất là 800%
 
-        |オブジェクトの種類| 円 | 四角| 多角形 | 直線 | 折れ線 | 自由線 | Text |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 適用 | o | o | o | o | o | x | x |
+   ~~~
+   NOTE: Disable button thu nhỏ khi độ phóng là 25%
+   ~~~
 
-    * 線種を変更するツールが無効になるケース一覧([線種を変更するツールが無効になるケース一覧](#6.-1つのツールがが無効になる各ケース))
+   ``` Hình ảnh miêu tả nút thu nhỏ bị disable```
 
-    1.5  線の太さを変更する (線の太さ)
+   ![Disable zoomdown button](./document_images/disable_zoomdown_button.png)
 
-    > 機能の概要：線の太さを変更する
+   ~~~
+   NOTE: Disable button phóng to khi độ phóng là 800%
+   ~~~
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
+   ``` Hình ảnh miêu tả nút phóng to bị disable```
 
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
+   ![Disable zoomin button](./document_images/disable_zoom_in_button.png)
+    // deleted
+2. Thiết lập print range (印刷範囲)
 
-    * 適用されるオブジェクトの種類
+   > Khái quát chức năng: Cho phép thay đổi kích thước print range, set về trạng thái mặc định
+   >
 
-        |オブジェクトの種類| 円 | 四角 | 多角形 | 直線 | 折れ線 | 自由線 | テキスト |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 適用 | o | o | o | o | o | o | x |
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-    * 線の太さを変更するツールが無効になるケース一覧([線の太さを変更するツールが無効になるケース一覧](#6.-1つのツールがが無効になる各ケース))
 
-    1.6 矢印の向きを変更する
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+3. Hiển thị thông tin object của canvas
 
-    > 機能の概要：矢印の向きを変更する
+   > Khái quát chức năng: Hiển thị thông tin tạo object/ update/ trạng thái lock
+   >
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
 
-    * 適用されるオブジェクトの種類
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+4. Chia màn hình (画面分割)
 
-        |オブジェクトの種類| 円 | 四角| 多角形 | 直線 | 折れ線 | 自由線 | テキスト |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 適用 | x | x | x | o | o | x | x |
+   > Khái quát chức năng: Cho phép chia nhỏ màn hình, hiển thị canvas của ngày sử dụng và các địa điểm khác
+   >
 
-    * 矢印の向きを変更するツールが無効になるケース一覧([矢印の向きを変更するツールが無効になるケース一覧](#6.-1つのツールがが無効になる各ケース))
+   ~~~
+   - Mặc định khi vào màn hình thiết kế hiện trường sẽ hiển thị chế độ 1 màn hình
+   ~~~
 
-    1.7 矢印のサイズを変更する
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-    > 機能の概要：矢印のサイズを変更する
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
 
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
+   1. Trường hợp 1 màn hình
 
-    * 適用されるオブジェクトの種類
+      * Menu navbar bottom hiển thị các option: chia màn hình, button zoom in/out, select độ phóng
 
-        |オブジェクトの種類| 円 | 四角| 多角形 | 直線 | 折れ線 | 自由線 | テキスト |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 適用 | x | x | x | o | o | x | x |
+        ```Hình ảnh miêu tả navbar bottom ở chế độ 1 màn hình```
 
-    * 矢印のサイズを変更するツールが無効になるケース一覧([矢印のサイズを変更するツールが無効になるケース一覧](#6.-1つのツールがが無効になる各ケース))
+        ![Navbar bottom in case of 1 screen](./document_images/navbar_bottom_1_screen.png)
+   2. Trường hợp nhiều hơn 1 màn hình
 
-    1.8 文字の色を変更する
+      * Disable tất cả các tool trên Home tab (ホーム) và Edit tab (オブジェクトの編集 ), ngoại trừ tool in và mode pointer vẫn cho phép thao tác bình thường
 
-    >  機能の概要：文字の色を変更する
+        ```Hình ảnh miêu tả tất cả các tool ở Home tab (ホーム) sẽ bị disable ngoại trừ tool in (印刷) và tool pointer ((ポインター)) vẫn cho phép thao tác bình thường.  Đồng thời Edit tab (オブジェクトの編集 ) bị disable ```
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
+        ![Disable tools in case of multiple screen](./document_images/disable_tools_multiple_screen.png)
+      * Menu navbar góc phải dưới màn hình chuyển các option zoom in/out sang option sắp xếp theo vị trí và theo ngày. Thêm button tiến, lùi theo option sắp xếp theo vị trí và theo ngày
 
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
+        ```Hình ảnh miêu tả navbar bottom ở chế độ nhiều hơn 1 màn hình```
 
-    * 適用されるオブジェクトの種類
+        ![Navbar bottom in case of multiple screen](./document_images/navbar_bottom_multiple_screen.png)
 
-        |オブジェクトの種類| 円 | 四角| 多角形 | 直線 | 折れ線 | 自由線 | Text |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 適用 | x | x | x | x | x | x | o |
+        ``` Hình ảnh miêu tả chế độ nhiều màn hình```
 
-    * 文字の色を変更するツールが無効になるケース一覧([文字の色を変更するツールが無効になるケース一覧](#6.-1つのツールがが無効になる各ケース))
+        ![Multiple screen](./document_images/multiple_screen.png)
+5. Thiết lập thứ tự hiển thị
 
-    1.9 文字のサイズを変更する
+   > Khái quát chức năng: Sau khi chia nhỏ màn hình, cho phép sort theo ngày sử dụng, vị trí, lùi/tiến theo ngày sử dụng hoặc vị trí
 
-    > 機能の概要：文字のサイズを変更する
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
 
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
 
-    * 適用されるオブジェクトの種類
+## 5. Chỉnh sửa canvas trong kế hoạch sắp xếp hiện trường
 
-        |オブジェクトの種類| 円 | 四角| Hình đa giác | 直線 | 折れ線 | 自由線 | テキスト |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | Áp dụng | x | x | x | x | x | x | o |
+1. Các tool style
 
-    * 文字のサイズを変更するツールが無効になるケース一覧([文字のサイズを変更するツールが無効になるケース一覧](#6.-1つのツールがが無効になる各ケース))
+   1.1 Thay đổi màu background (塗り)
 
-2. コピー
+   > Khái quát chức năng: Thay đổi màu background của object
+   >
 
-    > 機能の概要：オブジェクトの種類をコピーする
-    
-    * 次の種類のアカウントには、本機能を実行する権限がある
-    
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-    * コピーツールが無効になるケース一覧([コピーツールが無効になるケース一覧](#7.-コピー・カット・貼り付けツールが無効になる各ケース))
 
-3. カット
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Kiểu đối tượng được áp dụng
 
-     > 機能の概要：選択されるオブジェクトを削除してコピーする
-    
-    * 次の種類のアカウントには、本機能を実行する権限がある
-    
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
 
-    * カットツールが無効になるケース一覧 ([カットツールが無効になるケース一覧](#7.-コピー・カット・貼り付けツールが無効になる各ケース))
+     | Kiểu đối tượng | Hình tròn | Hình chữ nhật | Hình đa giác | Đường thẳng | Đường thẳng đa giác | Vẽ đường kẻ tự do | Text |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Áp dụng | o | o | o | x | o | x | o |
+   * Tìm hiểu trường hợp tool thay đổi màu background sẽ bị disable([Trường hợp tool thay đổi màu background sẽ bị disable](#7.-Các-trường-hợp-tool-style-sẽ-bị-disable))
 
-4. 貼り付け 
+   1.2 Thay đổi độ trong suốt background (透明度)
 
-     >  機能の概要：コピー/カットしたオブジェクトを貼り付け
-    
-    * 次の種類のアカウントには、本機能を実行する権限がある
-    
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
+   > Khái quát chức năng: Thay đổi độ trong suốt của màu background
+   >
 
-    * 貼り付けツールが無効になるケース一覧 ([貼り付けツールが無効になるケース一覧](#7.-コピー・カット・貼り付けツールが無効になる各ケース))
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-5. ショートカットキー
 
-    > 機能の概要：ショートカットキーでオブジェクトを編集できる
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Kiểu đối tượng được áp dụng
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
-    
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
 
-    * 次のショートカットキーを使用できる
-        1. コピー (Ctrl+C)
-        2. カット (Ctrl+X)
-        3. 貼り付け (Ctrl+V)
-        4. １つ戻る(Ctrl+Z)
-        5. 全部選択 (Ctrl+A)
+     | Kiểu đối tượng | Hình tròn | Hình chữ nhật | Hình đa giác | Đường thẳng | Đường thẳng đa giác | Vẽ đường kẻ tự do | Text |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Áp dụng | o | o | o | x | o | x | o |
+   * Tìm hiểu trường hợp tool thay đổi độ trong suốt background sẽ bị disable([Trường hợp tool thay đổi độ trong suốt background sẽ bị disable](#7.-Các-trường-hợp-tool-style-sẽ-bị-disable))
 
-6. ロック
+   1.3 Thay đổi màu của line (線の色)
 
-    > 機能の概要：現場配置計画でのキャンバスをロック・ロック解除することができる
+   > Khái quát chức năng: Thay đổi màu của line
+   >
 
-    ``` 下記画像はオブジェクトが選択されているイメージである```
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-    ![Navbar bottom in case of 1 screen](./document_images/active_object.png)
-    
-     ``` 下記画像はオブジェクトがロックされた状況である ```
 
-    ![Navbar bottom in case of 1 screen](./document_images/object_locked.png)
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Kiểu đối tượng được áp dụng
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
-    
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
 
-    * ロック機能が実行していても、次の操作が実行できる
-        1. 一つのオブジェクトまたは一つのグループのロック/ロック解除を許可する
-        2. 複数のオブジェクト/グループを選択する。そのうちに一つのオブジェクト/グループがロックされる
-        3. すべてのオブジェクトまたはすべてのグループをロックする
+     | Kiểu đối tượng | Hình tròn | Hình chữ nhật | Hình đa giác | Đường thẳng | Đường thẳng đa giác | Vẽ đường kẻ tự do | Text |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Áp dụng | o | o | o | o | o | o | x |
+   * Tìm hiểu trường hợp tool thay đổi màu của line sẽ bị disable([Trường hợp tool thay đổi màu của line sẽ bị disable](#7-Các-trường-hợp-tool-style-sẽ-bị-disable))
 
-    ~~~
-    注意： 協力会社管理者と職長はロックされているキャンバスを編集できない
-    ~~~
+   1.4 Thay đổi kiểu line (線の種類)
 
-     オブジェクトロック機能を実行すると無効になるツール一覧([オブジェクトロック機能を実行すると無効になるツール一覧](#8.-オブジェクトのロック機能を実行したときの無効になるツール))
+   > Khái quát chức năng: Thay đổi line style theo kiểu default hoặc nét đứt
+   >
 
-7. 複数のオブジェクトをグループ化またはグループ解除する
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-    > 機能の概要：複数のオブジェクトをグループ化またはグループ解除できる
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
-    
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Kiểu đối tượng được áp dụng
 
-    * 2つ以上のオブジェクトの場合のみ、この機能が利用できる
 
-    * 複数のオブジェクトをグループまたはグループ解除する機能を実行すると無効になるツール一覧([複数のオブジェクトをグループまたはグループ解除する機能を実行すると無効になるツール一覧](#9.-グループ化またはグループ解除機能を実行した時の無効になるツール))
+     | Kiểu đối tượng | Hình tròn | Hình chữ nhật | Hình đa giác | Đường thẳng | Đường thẳng đa giác | Vẽ đường kẻ tự do | Text |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Áp dụng | o | o | o | o | o | x | x |
+   * Tìm hiểu trường hợp tool thay đổi kiểu của line sẽ bị disable([Trường hợp tool thay đổi kiểu của line sẽ bị disable](#7-Các-trường-hợp-tool-style-sẽ-bị-disable))
 
-8. １つ戻る
+   1.5 Thay đổi kích thước line (線の太さ)
 
-    > 機能の概要：ひとつ前の状態に戻る (１つ戻る)
+   > Khái quát chức năng: Thay đổi kích thước của line
+   >
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
 
-    ~~~
-    - １画面で最大5回まで戻る可能。5回実行した後、「１つ戻る」ツールが無効になる
-    - ページをリロードすると、「１つ戻る」の数が0にリセットされる
-    ~~~
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Kiểu đối tượng được áp dụng
 
-9. １つ進む
 
-    > 機能の概要：ひとつ後の状態に進む　(１つ進む)
+     | Kiểu đối tượng | Hình tròn | Hình chữ nhật | Hình đa giác | Đường thẳng | Đường thẳng đa giác | Vẽ đường kẻ tự do | Text |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Áp dụng | o | o | o | o | o | o | x |
+   * Tìm hiểu trường hợp tool thay đổi kích thước của line sẽ bị disable([Trường hợp tool thay đổi kích thước của line sẽ bị disable](#7-Các-trường-hợp-tool-style-sẽ-bị-disable))
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
+   1.6 Thay đổi chiều mũi tên (矢印の向き)
 
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
+   > Khái quát chức năng: Thay đổi chiều mũi tên hiển thị
+   >
 
-    ~~~
-    - １画面で最大5回まで進む可能。5回実行した後、「１つ進む」ツールが無効になる
-    - ページをリロードすると、「１つ進む」の数が0にリセットされる
-    ~~~
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-10. 最前面へオブジェクトを移動する
 
-    > 機能の概要：最前面へオブジェクトを移動する
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Kiểu đối tượng được áp dụng
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
 
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
+     | Kiểu đối tượng | Hình tròn | Hình chữ nhật | Hình đa giác | Đường thẳng | Đường thẳng đa giác | Vẽ đường kẻ tự do | Text |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Áp dụng | x | x | x | o | o | x | x |
+   * Tìm hiểu trường hợp tool thay đổi chiều của mũi tên sẽ bị disable([Trường hợp tool thay đổi chiều của mũi tên sẽ bị disable](#7-Các-trường-hợp-tool-style-sẽ-bị-disable))
 
-    1. 最前面へオブジェクトを移動するツールを選択すると、このツールが無効になって、最背面へオブジェクトを移動するツールが有効になる
+   1.7 Thay đổi kích thước của mũi tên (矢印のサイズ) // edited
 
-        ``` 下記画像は「最前面へ」が無効になったイメージである ```
+   > Khái quát chức năng: Thay đổi kích thước của chiều mũi tên hiển thị
+   >
 
-        ![Disable tool move-front and active tool move-back](./document_images/active_tool_move_back.png)
-    
-    2. 次のような場合で最前面へオブジェクトを移動するツールが無効になる:
-        - キャンバス画面にオブジェクトまたはグループが1つしかない場合
-        - 最前面で表示されているオブジェクトの場合
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-11. 最背面へオブジェクトを移動する
 
-    >  機能の概要：最背面へオブジェクトを移動する
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Kiểu đối tượng được áp dụng
 
-    * 次の種類のアカウントには、本機能を実行する権限がある
 
-        | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-        | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-        | 権限 | o | o | o | o | o | x | 
+     | Kiểu đối tượng | Hình tròn | Hình chữ nhật | Hình đa giác | Đường thẳng | Đường thẳng đa giác | Vẽ đường kẻ tự do | Text |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Áp dụng | x | x | x | o | o | x | x |
+   * Tìm hiểu trường hợp tool thay đổi kích thước của chiều của mũi tên sẽ bị disable([Trường hợp tool thay đổi kích thước của chiều của mũi tên sẽ bị disable](#7-Các-trường-hợp-tool-style-sẽ-bị-disable))
 
-    1. 最背面へオブジェクトを移動するツールを選択すると、このツールが無効になって、最前面へオブジェクトを移動するツールが有効になる
-        
-        ``` 下記画像は「最背面へ」ツールが無効になったイメージである```
-        
-        ![Disable tool move-back (最背面へ) and active tool move-front (最前面へ)](./document_images/active_tool_move_front.png)
+   1.8 Thay đổi màu của text (文字の色)
 
-## 6. 現場配置計画印刷
-1. 印刷範囲を設定する
+   > Khái quát chức năng: Thay đổi màu của text
+   >
 
-    > 機能の概要：印刷範囲を設定できる
-    
-    * 次の種類のアカウントには、本機能を実行する権限がある
-    
-    | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-    | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-    | 権限 | o | o | o | o | o | x | 
-        
-2. 印刷範囲をPDF形式に変換してダウンロードすることができる
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
-    > 機能の概要：設定した印刷範囲をPDF形式に変換してダウンロードすることができる
-    
-    * 次の種類のアカウントには、本機能を実行する権限がある
-    
-    | ユーザー | 本社管理者 | 支店管理者 | 現場監督 | 協力会社管理者 | 職長 | 職人 |
-    | ----------- | :---: | :---: | :---: | :---: | :---: | :---: | 
-    | 権限 | o | o | o | o | o | x | 
+
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Kiểu đối tượng được áp dụng
+
+
+     | Kiểu đối tượng | Hình tròn | Hình chữ nhật | Hình đa giác | Đường thẳng | Đường thẳng đa giác | Vẽ đường kẻ tự do | Text |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Áp dụng | x | x | x | x | x | x | o |
+   * Tìm hiểu trường hợp tool thay đổi màu của text sẽ bị disable([Trường hợp tool thay đổi màu của text sẽ bị disable](#7-Các-trường-hợp-tool-style-sẽ-bị-disable))
+
+   1.9 Thay đổi kích thước của text (文字のサイズ)
+
+   > Khái quát chức năng: Thay đổi màu của text
+   >
+
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
+
+
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Kiểu đối tượng được áp dụng
+
+
+     | Kiểu đối tượng | Hình tròn | Hình chữ nhật | Hình đa giác | Đường thẳng | Đường thẳng đa giác | Vẽ đường kẻ tự do | Text |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Áp dụng | x | x | x | x | x | x | o |
+   * Tìm hiểu trường hợp tool thay đổi màu của text sẽ bị disable([Trường hợp tool thay đổi màu của text sẽ bị disable](#7-Các-trường-hợp-tool-style-sẽ-bị-disable))
+2. Copy (コピー)
+
+   > Khái quát chức năng: Copy object đang được chọn
+   >
+
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
+
+
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Tìm hiểu trường hợp tool Copy (コピー) sẽ bị disable ([Trường hợp tool copy sẽ bị disable](#8-Các-trường-hợp-tool-copy,-cut-và-paste-bị-disable))
+3. Cut (カット)
+
+   > Khái quát chức năng: Xóa và copy object đang được chọn
+   >
+
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
+
+
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Tìm hiểu trường hợp tool Cut (カット) sẽ bị disable ([Trường hợp tool cut sẽ bị disable](#8-Các-trường-hợp-tool-copy,-cut-và-paste-bị-disable))
+4. Paste (貼り付け)
+
+   > Khái quát chức năng: Paste object vừa được copy/cut
+   >
+
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
+
+
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Tìm hiểu trường hợp tool Paste (貼り付け) sẽ bị disable ([Trường hợp tool paste sẽ bị disable](#8-Các-trường-hợp-tool-copy,-cut-và-paste-bị-disable))
+5. Shortcut key
+
+   > Khái quát chức năng: Cho phép thao tác với object hoặc chọn tool bằng shortcut key  // edited
+   >
+
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
+
+
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Các phím tắt cho phép sử dụng
+
+     1. Copy (コピー) (Ctrl+C)
+     2. Cut (カット) (Ctrl+X)
+     3. Paste (貼り付け) (Ctrl+V)
+     4. Redo (１つ戻る)(Ctrl+Z)
+     5. Chọn tất cả (Ctrl+A)
+     6. Tool select (選択) (Key A)  // added
+     7. Tool Text (テキスト) (Key T) // added
+     8. Tool di chuyển background (背景移動) (Spacebar) // added
+     9. Xóa object đã chọn (削除) (Key Del) // added
+6. Khóa đối tượng (ロック)
+
+   > Khái quát chức năng: Cho phép set lock, unlock canvas trong kế hoạch sắp xếp hiện trường
+   >
+
+   ``` Hình ảnh miêu tả object đang ở trạng thái được chọn```
+
+   ![Navbar bottom in case of 1 screen](./document_images/active_object.png)
+
+   ```Hình ảnh miêu tả object đang ở trạng thái bị lock```
+
+   ![Navbar bottom in case of 1 screen](./document_images/object_locked.png)
+
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
+
+
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Các trường hợp cho phép thực hiện chức năng
+
+     1. Cho phép Lock/Unlock 1 object hoặc 1 group
+     2. Chọn nhiều object/group, trong đó có 1 object/group bị lock
+     3. Lock tất cả object hoặc tất cả group
+
+   ~~~
+   NOTE: Admin công ty hợp tác và thợ cả không thể unlock object đã lock bởi admin trụ sở chính, admin chi nhánh quản đốc hiện trường hoặc quản đốc hiện trường. // edited
+   ~~~
+
+   Các tool sẽ bị disable khi thực hiện chức năng khóa đối tượng([Các tool sẽ bị disable khi thực hiện chức năng lock object](#9-Các-tool-sẽ-bị-disable-khi-thực-hiện-chức-năng-lock-object))
+7. Group (グループ化) hoặc Ungroup (グループ解除) nhiều đối tượng
+
+   > Khái quát chức năng: Cho phép group hoặc ungroup nhiều object
+   >
+
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
+
+
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+   * Chỉ áp dụng group với 2 object trở lên.
+   * Các tool sẽ bị disable khi thực hiện chức năng group hoặc ungroup nhiều đối tượng([Các tool sẽ bị disable khi thực hiện chức năng group và ungroup nhiều đối tượng](#10.-Các-tool-sẽ-bị-disable-khi-thực-hiện-chức-năng-group-hoặc-ungroup))
+8. Redo (１つ戻る)
+
+   > Khái quát chức năng: Lùi 1 bước về trạng thái chỉnh sửa trước đấy
+   >
+
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
+
+
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+
+   ~~~
+   - Tối đa 5 lần redo trên 1 màn hình thao tác. Sau 5 lần thao tác sẽ disable tool redo
+   - Reload lại trang sẽ reset lại số lần redo về 0
+   ~~~
+9. Go foward (１つ進む)
+
+   > Khái quát chức năng: Tiến lên 1 bước trạng thái chỉnh sửa vừa lùi (１つ進む)
+   >
+
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
+
+
+     | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+     | - | :-: | :-: | :-: | :-: | :-: | :-: |
+     | Quyền hạn | o | o | o | o | o | x |
+
+   ~~~
+   - Tối đa 5 lần go forward trên 1 màn hình thao tác. Sau 5 lần thao tác sẽ bị disable nút go forward
+   - Reload lại trang sẽ reset số lần go forward về 0
+   ~~~
+10. Di chuyển object lên trên cùng (最前面へ)
+
+    > Khái quát chức năng: Di chuyến object lên vị trí hiển thị đầu tiên
+    >
+
+    * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
+
+
+| Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+| - | :-: | :-: | :-: | :-: | :-: | :-: |
+| Quyền hạn | o | o | o | o | o | x |
+
+    1. Sau khi chọn tool Di chuyển đối tượng lên trên cùng (最前面へ) sẽ disable tool Di chuyển đối tượng lên trên cùng (最前面へ) và active tool Di chuyển đối tượng xuống cuối cùng (最背面へ)
+
+       ```Hình ảnh miêu tả tool Di chuyển đối tượng lên trên cùng (最前面へ) bị disable```
+
+       ![Disable tool move-front and active tool move-back](./document_images/active_tool_move_back.png)
+    2. Disable tool Di chuyển đối tượng lên trên cùng (最前面へ) với các trường hợp:
+
+       - Nếu chỉ có 1 object hoặc 1 group trên màn hình canvas
+       - Object đang hiển thị đang ở vị trí đầu tiên
+11. Di chuyển object xuống dưới cuối
+
+    > Khái quát chức năng: Di chuyển object xuống vị trí hiển thị cuối cùng
+    >
+
+    * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
+
+
+| Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+| - | :-: | :-: | :-: | :-: | :-: | :-: |
+| Quyền hạn | o | o | o | o | o | x |
+    * Sau khi chọn Di chuyển đối tượng xuống cuối cùng (最背面へ) sẽ disable tool Di chuyển đối tượng xuống cuối cùng (最背面へ) và active tool Di chuyển đối tượng lên trên cùng (最前面へ)
+
+      ```Hình ảnh miêu tả tool Di chuyển đối tượng xuống cuối cùng (最背面へ) bị disable```
+
+      ![Disable tool move-back (最背面へ) and active tool move-front (最前面へ)](./document_images/active_tool_move_front.png)
+
+## 6. In kế hoạch sắp xếp hiện trường
+
+1. Thiết lập phạm vi in
+
+   > Khái quát chức năng: Cho phép thiết lập phạm vi in
+   >
+
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
+
+
+   | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+   | - | :-: | :-: | :-: | :-: | :-: | :-: |
+   | Quyền hạn | o | o | o | o | o | x |
+2. Cho phép chuyển đổi pham vị in sang định dạng PDF và thực hiện download.
+
+   > Khái quát chức năng: Cho phép convert phạm vi in đã thiết sang PDF, và thực hiện chức năng download.
+   >
+
+   * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
+
+
+   | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+   | - | :-: | :-: | :-: | :-: | :-: | :-: |
+   | Quyền hạn | o | o | o | o | o | x |
+
+## 7. Thông tin màn hình sắp xếp hiện trường // added tất cả các nội dung bên dưới
+
+1. Thiết lập chế độ toàn màn hình (フルスクリーンモード)
+
+    > Khái quát chức năng: Trên chế độ full screen, sẽ hiển thị màn hình canvas và layout chọn tool, header và navbar ở góc phải cuối màn hình
+    >
+
+* Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
+
+
+  | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+  | - | :-: | :-: | :-: | :-: | :-: | :-: |
+  | Quyền hạn | o | o | o | o | o | x |
+* Khi hiển thị chế độ fullscreen sẽ ẩn 2 menu navbar bên trái màn hình
+
+~~~
+NOTE: Mặc định khi vào màn hình hiện trường sẽ ở chế độ fullscreen
+~~~
+
+2. Khóa mở/mở khóa màn hình canvas
+
+    > Khái quát chức năng: Khóa hoăc mở khóa màn hình canvas, admin công ty hợp tác và thợ cả không thể thêm hay chỉnh sửa object trong màn hình canvas, tool style sẽ bị ẩn đối với 2 role trên.
+    >
+
+  | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+  | - | :-: | :-: | :-: | :-: | :-: | :-: |
+  | Quyền hạn | o | o | o | x | x | x |
+3. Số lượng object đã vẽ
+
+	> Khái quát chức năng:  Tối đa 500 object có thể vẽ, số lượng object sẽ update khi người dùng thêm/bớt object.
+    >
