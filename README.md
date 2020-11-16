@@ -1203,9 +1203,9 @@ Sử dụng 1 trong cách cách dưới đây:
 * Những kiểu tài khoản dưới đây có quyền thực hiện chức năng.
 
 
-  | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
-  | - | :-: | :-: | :-: | :-: | :-: | :-: |
-  | Quyền hạn | o | o | o | o | o | x |
+   | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+   | - | :-: | :-: | :-: | :-: | :-: | :-: |
+   | Quyền hạn | o | o | o | o | o | x |
 * Khi hiển thị chế độ fullscreen sẽ ẩn 2 menu navbar bên trái màn hình
 
 ~~~
