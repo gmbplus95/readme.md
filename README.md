@@ -1217,9 +1217,9 @@ NOTE: Mặc định khi vào màn hình hiện trường sẽ ở chế độ fu
     > Khái quát chức năng: Khóa hoăc mở khóa màn hình canvas, admin công ty hợp tác và thợ cả không thể thêm hay chỉnh sửa object trong màn hình canvas, tool style sẽ bị ẩn đối với 2 role trên.
     >
 
-  | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
-  | - | :-: | :-: | :-: | :-: | :-: | :-: |
-  | Quyền hạn | o | o | o | x | x | x |
+   | Người sử dụng | Admin trụ sở chính | Admin chi nhánh | Quản đốc hiện trường | Admin công ty hợp tác | Thợ cả | Thợ thủ công |
+   | - | :-: | :-: | :-: | :-: | :-: | :-: |
+   | Quyền hạn | o | o | o | x | x | x |
 3. Số lượng object đã vẽ
 
 	> Khái quát chức năng:  Tối đa 500 object có thể vẽ, số lượng object sẽ update khi người dùng thêm/bớt object.
